@@ -42,9 +42,6 @@ fun main(args:Array<String>){
     )//Named Parameters -> parametros nombrados
     calcularSueldo(700.00) // no me pide tasa por que taasa tiene valor por defecto
     calcularSueldo(sueldo=650.00)
-
-
-
 }
 
 fun calcularSueldo(
@@ -58,13 +55,10 @@ fun calcularSueldo(
     } else {
         return sueldo * tasa
     }
-
 }
 
-
-
  fun imprimirMensaje1(): Unit{   //Unit = void
-    println("")
+    println("Nevo Mensaje")
 }
  fun imprimirMensaje2(){   //Unit = void
     println("")
