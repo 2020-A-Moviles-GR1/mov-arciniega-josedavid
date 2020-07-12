@@ -4,7 +4,10 @@ fun main(args:Array<String>){
     println("Hola")
     //Ejemplo Java:
     //Int edad = 31;
-    //Mutables -> var
+
+    //VARIABLES
+
+    // VARIABLES Mutables -> var
     var edadProfesor = 31    // no especifocamos el tipo de dato
                              // no necesita ;
     //Duck Typing = esto realiza el compilador internamente
@@ -15,20 +18,35 @@ fun main(args:Array<String>){
     edadProfesor = 32
     edadAlumno1 = 23
     // Nombre  de veriables debe ser descriptivo
-    //Inmutables (RECOMENDADO) -> val
+
+    // VARIABLES Inmutables -> val (RECOMENDADO)
     val numeroCuenta = 1234543 // NO SE PUEDE REASIGNAR
     // numeroCuenta = 1234
 
-    // Tipos de Variables
-    val nombreProfesor: String = "Vicente Adrian"
+    val fechaNacimiento = Date() // instanciamos clases dentro de Koltlin SIN new
+
+
+    // Variables declarando el tipo de variable
+    val nombreProfesor: String = "Vicente Adrian" //
+    val nombreAlumno = "Jose David"
     val sueldo: Double = 13.32
     val apellidoProfesor: Char = 'a'
-    val fechaNacimiento = Date() // En Java : new Date()
+
+    //  Variables SIN declarar el tipo de variable (RECOMENDADO)
+    val nombreProfesor1 = "Vicente Adrian1" //
+    val nombreAlumno1 = "Jose David"
+    val sueldo1 = 13.32
+    val apellidoProfesor1 = 'a'
 
     if (sueldo == 13.32){
 
     } else {
 
+    }
+    when (sueldo) {
+        13.32 -> println("Sueldo Normal")
+        -13.32 -> println("Sueldo Negativo")
+        else -> println("No se Reconoce Sueldo")
     }
 
     // If de una sola linea
@@ -41,14 +59,15 @@ fun main(args:Array<String>){
             sueldo=800.00
     )//Named Parameters -> parametros nombrados
     calcularSueldo(700.00) // no me pide tasa por que taasa tiene valor por defecto
-    calcularSueldo(sueldo=650.00)
+    var resultado = calcularSueldo(sueldo=650.00)
+    println(resultado)
 }
 
-fun calcularSueldo(
-        sueldo: Double,
-        tasa: Double = 12.00,
-        calculoEspecial : Int? = null// Puede ser nulo "NULL"
 
+fun calcularSueldo(
+        sueldo: Double, // Requeridos
+        tasa: Double = 12.00, // Requeridos (Tienen valor por defecto)
+        calculoEspecial : Int? = null // Puede ser nulo "NULL"
 ): Double {
     if (calculoEspecial != null) {
         return sueldo * tasa * calculoEspecial
