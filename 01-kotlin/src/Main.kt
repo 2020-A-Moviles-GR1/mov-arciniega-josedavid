@@ -212,7 +212,7 @@ fun main(args:Array<String>){
 
     val respuestaReduce= arregloDeListas // acumulador empieza en 0 o en VACIO con Strings
             .reduce { acumulador, iteracion ->
-                return@reduce acumulador - iteracion
+                return@reduce acumulador + iteracion
             }
 
 
@@ -226,15 +226,17 @@ fun main(args:Array<String>){
     // Indico el valor desde donde empieza
 
     val respuestaFold= arregloDeListas // acumulador empieza en 0 o en VACIO con Strings
-            .fold(
+            .fold(                          // uso parectesis si voy a mandar mas de un parametro
                 100,
                 { acumulador, iteracion ->
-                    return@fold acumulador + iteracion
+                    return@fold acumulador - iteracion
                 }
             )
     println("///////////////////////////////////////////")
     println(arregloDeListas)
     println(respuestaFold)
+
+    //uso parectesis si voy a mandar mas de un parametro
 
     // .forEach -> Nada/Unit
     // .map -> Arreglo
@@ -243,6 +245,20 @@ fun main(args:Array<String>){
     // .all -> Booleano
     // .reduce -> Valor
     // .fold -> Valor
+
+    // EJERCICIO 100 PUNTOS DE VIDA
+    // cada ataque Reducir el daño en 20 %
+    // Al daño menor a 18 no le hace un daño
+    val vidaActual = arregloDeListas
+            .map { it*0.8}
+            .filter { it>18 }
+            .fold(100.00,{acc,d -> acc - d})
+            .also { println(" la vida del personaje es: ") }  // also me permite OTRO bloque de código
+            .also { print(it)}  // also me permite ejecutar otra funcion despues de funciones
+
+
+
+
 
 
 }
@@ -267,5 +283,41 @@ fun calcularSueldo(
  fun imprimirMensaje2(){   //Unit = void
     println("")
 }
+
+// CLASES ABSTRACTAS
+
+abstract class NumeroJava{ // NO RECOMENDADO -> NUNCA LO VAMOS A USAR
+    val numeroUno:Int       // si es public no lo defino
+    private val numeroDos:Int // si es private o  protected si lo defino
+    constructor(uno:Int, dos:Int){
+        numeroUno=uno
+        numeroDos=dos
+
+    }
+}
+
+abstract class Numeros( // RECOMENDADO  el constructor se crea por dfecto
+        val numeroUno:Int,       // si es public no lo defino
+        protected val numeroDos:Int // si es private o  protected si lo defino
+){
+}
+
+class Suma(
+        uno:Int,
+        dos:Int
+):Numeros(uno,dos){
+    fun sumar ():Int{
+        return this.numeroUno + this.numeroDos
+    }
+}
+class SumaDos(
+        private val uno:Int,  // si defino "public val"  tengo acceso a las variables
+        private val dos:Int
+):Numeros(uno,dos){
+    fun sumar ():Int{
+        return uno + dos
+    }
+}
+
 
 
