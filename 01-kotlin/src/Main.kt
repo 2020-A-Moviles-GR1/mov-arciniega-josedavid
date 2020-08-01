@@ -258,9 +258,6 @@ fun main(args:Array<String>){
 
 
 
-
-
-
 }
 
 
@@ -318,6 +315,3 @@ class SumaDos(
         return uno + dos
     }
 }
-
-
-
